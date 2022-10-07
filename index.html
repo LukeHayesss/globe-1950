@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Global Extremes
+    </title>
+    <meta content="Global Extremes" property="og:title">
+    <meta content="meta-tags/og-image.jpg" property="og:image">
+    <meta content="width=device-width, initial-scale=1" name=viewport>
+
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,700|Poppins" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/67f90579cc.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,800,500,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/set2.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link href="css/globeEvents.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!--                Threejs Globe-->
+
+<section class="section-template" id="weather-events">
+    <div class="row section-vis-row">
+    <p>
+    <div class="section-col" style="margin-left: 10%; width: 100%; 
+    text-align: left; color: whitesmoke"><h4 style="color: whitesmoke">
+    Global Extremes: Interactive Weather Events, Globally</h4>
+        <h5 style="color: whitesmoke">
+           Extreme weather events are becoming more frequent across 
+           the world. <br>The below visualization lets you explore the time period 
+           as well as event type. 
+        </h5>
+    </div>
+</div>
+<div class="flex-grid section-vis-row" style="margin-bottom: 0%">
+    <div class="flexCol" id="globe" style="margin-left: 0%;">
+        <button class="eventDateButton" id="reset" style="width: 15%; margin-left: 16%"> Reset Globe</button>
+        <canvas height="500" width="600">
+
+        </canvas>
+    </div>
+    <div class="flexCol">
+        <div class="row" style="padding-top: 25px"> The globe shows &nbsp; <span
+                style="color: #c26565; font-weight: bold">252 extreme weather events</span> 
+                across the world, and of these events, &nbsp;<span style="color:#c26565; 
+                font-weight: bold">92% </span>&nbsp;were within the past decade.
+        </div>
+
+        <div class="row" style="padding-top: 30px">
+            <div style="padding-left: 0px"></div>
+            <button class="eventDateButtonFocus" id="AllDates"> All</button>
+            <div style="padding-right: 10px"></div>
+            <button class="eventDateButton" id="pre2011"> 1950 - 2011</button>
+            <div style="padding-right: 10px"></div>
+            <button class="eventDateButton" id="post2011"> 2011 - 2020</button>
+        </div>
+        <div style="padding-top: 30px"></div>
+        <div style="font-weight: bolder">Event Type</div>
+        <div class="flex-grid">
+            <div class="col">
+                <div style="padding-bottom: 10px"></div>
+                <button class="row small-font eventTypeButton" id="firesButton" 
+                style="padding-right: 5px; "> 🔥 &nbsp;&nbsp;Wildfire
+                </button>
+                <div style="padding-bottom: 10px"></div>
+                <button class="row small-font eventTypeButton" id="stormButton">🌩 &nbsp;&nbsp;Storm
+                </button>
+                <div style="padding-bottom: 10px"></div>
+                <button class="row small-font eventTypeButton" id="droughtButton"> 💧️ &nbsp;&nbsp;Drought
+                </button>
+
+
+            </div>
+            <div class="col">
+                <div style="padding-bottom: 10px"></div>
+                <button class="row small-font eventTypeButton" id="heatButton"> 🌡 &nbsp; &nbsp;Heat
+                </button>
+                <div style="padding-bottom: 10px"></div>
+                <button class="row small-font eventTypeButton" id="sunButton"> ☀️ &nbsp;&nbsp;Sun
+                </button>
+                <div style="padding-bottom: 10px"></div>
+                <button class="row small-font eventTypeButtonFocus" id="allEvents"> 🌍️ &nbsp;&nbsp;All
+                </button>
+            </div>
+        </div>
+
+        <div class="flex-grid">
+            <div class="row">
+                <div class="col">
+                    <div style="font-weight: bolder">Number of Events</div>
+
+                    <div id="numEvents" style="color:#c26565; 
+                    font-size: 40px; font-weight: bolder"> 252</div>
+                </div>
+                <div class="col">
+                    <div style="font-weight: bolder" id="eventHeader">
+                        Weather Events</div>
+                    <div style="font-size: 15px; margin-right: 20px" 
+                    id ="eventCaption"> The different symbols show the 
+                    type of extreme weather event.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script src='js/jquery.vide.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $('.ind').counterUp({
+            delay: 30,
+            time: 5000
+        });
+    });
+</script>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+
+<!-- add d3 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    d3_7 = d3
+    window.d3 = null
+</script>
+
+<script charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<script>
+    d3_3 = d3
+    window.d3 = null
+</script>
+
+
+<!--Main-->
+<script src="js/main.js"></script>
+
+<!--Threejs globe scripts-->
+
+<script src="./js/globeEvents/three.js"></script>
+
+<script src="./js/globeEvents/GLTFLoader.js"></script>
+
+<script src="./js/globeEvents/orbit-controls.js"></script>
+
+<script  src="./js/globeEvents/globe.js"></script>
+
+<script src="./js/globeEvents/main.js"></script>
+
+<script src="./js/people.js"></script>
+
+</body>
+
+</html>
